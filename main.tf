@@ -6,8 +6,7 @@ resource "aws_ecr_lifecycle_policy" "default" {
   repository = aws_ecr_repository.default.name
 
   policy = jsonencode({
-    "rules" : [
-      local.protected_images_rules,
+    "rules" : concat(local.protected_images_rules, [
       {
         "rulePriority" : length(var.protected_images) + 1,
         "description" : "Always keep ${var.max_images_count} release [${var.release_images_prefix}] images stored.",
@@ -58,6 +57,6 @@ resource "aws_ecr_lifecycle_policy" "default" {
           "type" : "expire"
         }
       }
-    ]
+    ])
   })
 }
