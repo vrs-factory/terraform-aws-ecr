@@ -6,7 +6,7 @@ Terraform module to provision an Elastic Container Repository (ECR) for AWS.
 
 ```terraform
 module "project_api" {
-  source = "git::https://github.com/vrs-factory/terraform-aws-ecr-repository?ref=v1.0.0"
+  source = "git::https://github.com/vrs-factory/terraform-aws-ecr?ref=v1.0.0"
 
   namespace        = "vrs-factory/project"
   name             = "api"
